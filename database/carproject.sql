@@ -140,7 +140,8 @@ CREATE TABLE `users` (
   `FNAME` varchar(255) NOT NULL,
   `LNAME` varchar(255) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
-  `LIC_NUM` varchar(255) NOT NULL,
+  `date_available` varchar(255) NOT NULL,
+  `position_applied` varchar(255) NOT NULL,
   `PHONE_NUMBER` bigint(11) NOT NULL,
   `PASSWORD` varchar(255) NOT NULL,
   `GENDER` varchar(255) NOT NULL

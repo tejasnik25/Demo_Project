@@ -193,7 +193,8 @@ $num=mysqli_num_rows($queryy);
                     <tr>
                         <th>NAME</th> 
                         <th>EMAIL</th>
-                        <th>LICENSE NUMBER</th>
+                        <th>Date Available</th>
+                        <th>Position Applied</th>
                         <th>PHONE NUMBER</th> 
                         <th>GENDER</th> 
                         <th>DELETE USERS</th>

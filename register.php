@@ -158,6 +158,20 @@ input#cpsw{
             id="name" placeholder="Enter Your License number" required>
             <br><br> -->
 
+            <div class="form-group">
+                <label for="date_available">Date Available</label>
+                <br>
+                <input type="date" name="date_available" class="form-control" required>
+            </div>
+            <br><br>
+
+            <div class="form-group">
+                <label for="position_applied">Position Applied For</label>
+                <br>
+                <input type="text" name="position_applied" class="form-control" required>
+            </div>
+            <br><br>
+
             <label>Phone Number : </label>
             <br>
             <input type="tel" name="ph" maxlength="10" onkeypress="return onlyNumberKey(event)"
@@ -192,16 +206,8 @@ input#cpsw{
             <br><br>
 
               <!-- Step 2 -->
-              <div class="step d-none" id="step2">
+              <!-- <div class="step d-none" id="step2">
                     <h5 class="mb-3">Job Application Details</h5>
-                    <div class="form-group">
-                        <label for="date_available">Date Available</label>
-                        <input type="date" name="date_available" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="position_applied">Position Applied For</label>
-                        <input type="text" name="position_applied" class="form-control" required>
-                    </div>
                     <div class="form-group">
                         <label for="surname">Surname</label>
                         <input type="text" name="surname" class="form-control" required>
@@ -222,7 +228,7 @@ input#cpsw{
                         <button type="button" class="btn btn-secondary prev-step">Previous</button>
                         <button type="button" class="btn btn-primary next-step">Continue</button>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Step 3 -->
                 <div class="step d-none" id="step3">
