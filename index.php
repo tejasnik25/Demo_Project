@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     
-    <title>CAR RENTAL</title>
+    <title>Manning</title>
     <script type="text/javascript">
         window.history.forward();
         function noBack() {
@@ -77,7 +77,7 @@ require_once('connection.php');
     <div class="hai">
         <div class="navbar">
             <div class="icon">
-                <h2 class="logo">CaRs</h2>
+                <h2 class="logo">Kami</h2>
             </div>
             <div class="menu">
                 <ul>
@@ -93,10 +93,10 @@ require_once('connection.php');
           
         </div>
         <div class="content">
-            <h1>Rent Your <br><span>Dream Car</span></h1>
-            <p class="par">Live the life of Luxury.<br>
-                Just rent a car of your wish from our vast collection.<br>Enjoy every moment with your family<br>
-                 Join us to make this family vast.  </p>
+            <h1>Rent Your <br><span>Lorem ipsum</span></h1>
+            <p class="par">Lorem ipsum dolor sit amet <br>
+                consectetur adipisicing elit. 
+                Animi laudantium sed odit harum iste quidem amet nostrum temporibus ut reiciendis.  </p>
             <button class="cn"><a href="register.php">JOIN US</a></button>
             <div class="form">
                 <h2>Login Here</h2>
