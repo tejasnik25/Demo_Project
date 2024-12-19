@@ -15,14 +15,15 @@ if(isset($_POST['regs']))
     $fname=mysqli_real_escape_string($con,$_POST['fname']);
     $lname=mysqli_real_escape_string($con,$_POST['lname']);
     $email=mysqli_real_escape_string($con,$_POST['email']);
-    $lic=mysqli_real_escape_string($con,$_POST['lic']);
+    $date_available=mysqli_real_escape_string($con,$_POST['date_available']);
+    $position_applied=mysqli_real_escape_string($con,$_POST['position_applied']);
     $ph=mysqli_real_escape_string($con,$_POST['ph']);
    
     $pass=mysqli_real_escape_string($con,$_POST['pass']);
     $cpass=mysqli_real_escape_string($con,$_POST['cpass']);
     $gender=mysqli_real_escape_string($con,$_POST['gender']);
     $Pass=md5($pass);
-    if(empty($fname)|| empty($lname)|| empty($email)|| empty($lic)|| empty($ph)|| empty($pass) || empty($gender))
+    if(empty($fname)|| empty($lname)|| empty($email)|| empty($date_available)|| empty($position_applied)|| empty($ph)|| empty($pass) || empty($gender))
     {
         echo '<script>alert("please fill the place")</script>';
     }
@@ -36,9 +37,27 @@ if(isset($_POST['regs']))
 
         }
         else{
-        $sql="insert into users (FNAME,LNAME,EMAIL,LIC_NUM,PHONE_NUMBER,PASSWORD,GENDER) values('$fname','$lname','$email','$lic',$ph,'$Pass','$gender')";
+        $sql="insert into users (FNAME,LNAME,EMAIL,date_available,position_applied,PHONE_NUMBER,PASSWORD,GENDER) values('$fname','$lname','$email', '$date_available' , '$position_applied' ,$ph,'$Pass','$gender')";
         $result = mysqli_query($con,$sql);
           
+
+          // $to_email = $email;
+          // $subject = "NO-REPLY";
+          // $body = "THIS MAIL CONTAINS YOUR AUTHENTICATION DETAILS....\nYour Password is $pass and Your Registered email is $to_email"
+          //          ;
+          // $headers = "From: sender email";
+          
+          // if (mail($to_email, $subject, $body, $headers))
+          
+          // {
+          //     echo "Email successfully sent to $to_email...";
+          // }
+          
+          // else
+ 
+          // {
+          // echo "Email sending failed!";
+          // }
         if($result){
             echo '<script>alert("Registration Successful Press ok to login")</script>';
             echo '<script> window.location.href = "index.php";</script>';       
@@ -64,7 +83,7 @@ if(isset($_POST['regs']))
 
   <style>
       body{
-        /* background:  #fdcd3b; */
+        background:  #fdcd3b;
         background-size: auto;
          background-position:unset;
          /* background-repeat: ; */
@@ -127,7 +146,7 @@ input#cpsw{
 }</style> 
 
     <button id="back"><a href="index.php">HOME</a></button>
-    <h1 id="fam">JOIN OUR FAMILY!</h1>
+    <h1 id="fam">JOIN OUR FAMILY</h1>
  <div class="main">
         
         <div class="register">
@@ -152,24 +171,16 @@ input#cpsw{
             id="name" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="ex: example@ex.com"placeholder="Enter Valid Email" required>
             <br><br>
             
-            <!-- <label>Your License number : </label>
+            <label>Date Of Avaibility : </label>
             <br>
-            <input type="text" name="lic" maxlength="7"
-            id="name" placeholder="Enter Your License number" required>
-            <br><br> -->
-
-            <div class="form-group">
-                <label for="date_available">Date Available</label>
-                <br>
-                <input type="date" name="date_available" class="form-control" required>
-            </div>
+            <input type="date" name="date_available"
+            id="name" required>
             <br><br>
 
-            <div class="form-group">
-                <label for="position_applied">Position Applied For</label>
-                <br>
-                <input type="text" name="position_applied" class="form-control" required>
-            </div>
+            <label>Position Applied : </label>
+            <br>
+            <input type="text" name="position_applied" 
+            id="name" required>
             <br><br>
 
             <label>Phone Number : </label>
@@ -177,6 +188,8 @@ input#cpsw{
             <input type="tel" name="ph" maxlength="10" onkeypress="return onlyNumberKey(event)"
             id="name" placeholder="Enter Your Phone Number" required>
             <br><br>
+
+            
 
             <label>Password : </label>
             <br>
@@ -199,154 +212,7 @@ input#cpsw{
                     <input type="radio" id="input_disabled" name="gender" value="female" style="width:160px" />
                 </td>
             </tr>
-
-            <div class="d-flex justify-content-between">
-                        <button type="button" class="btn btn-primary next-step">Continue to Next Step</button>
-            </div>
             <br><br>
-
-              <!-- Step 2 -->
-              <!-- <div class="step d-none" id="step2">
-                    <h5 class="mb-3">Job Application Details</h5>
-                    <div class="form-group">
-                        <label for="surname">Surname</label>
-                        <input type="text" name="surname" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="first_name">First Name</label>
-                        <input type="text" name="first_name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="middle_names">Middle Name(s)</label>
-                        <input type="text" name="middle_names" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="photo">Attach Photo</label>
-                        <input type="file" name="photo" class="form-control" accept="image/*" required>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <button type="button" class="btn btn-secondary prev-step">Previous</button>
-                        <button type="button" class="btn btn-primary next-step">Continue</button>
-                    </div>
-                </div> -->
-
-                <!-- Step 3 -->
-                <div class="step d-none" id="step3">
-                    <h5 class="mb-3">Personal Details</h5>
-                    <div class="form-group">
-                        <label for="dob">Date of Birth</label>
-                        <input type="date" name="dob" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="place_of_birth">Place of Birth</label>
-                        <input type="text" name="place_of_birth" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="nationality">Nationality</label>
-                        <input type="text" name="nationality" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="height">Height</label>
-                        <input type="text" name="height" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="weight">Weight</label>
-                        <input type="text" name="weight" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="hair_colour">Hair Colour</label>
-                        <input type="text" name="hair_colour" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="eye_colour">Eye Colour</label>
-                        <input type="text" name="eye_colour" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="marital_status">Marital Status</label>
-                        <input type="text" name="marital_status" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="father_name">Father’s Name</label>
-                        <input type="text" name="father_name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="mother_name">Mother’s Name</label>
-                        <input type="text" name="mother_name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="next_of_kin">Next of Kin</label>
-                        <input type="text" name="next_of_kin" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="home_address">Home Address</label>
-                        <input type="text" name="home_address" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="home_tel_no">Tel. No. (Home)</label>
-                        <input type="text" name="home_tel_no" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="other_address">Other Address</label>
-                        <input type="text" name="other_address" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="other_tel_no">Tel. No. (Other)</label>
-                        <input type="text" name="other_tel_no" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" name="email" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="mob_no">Mob No.</label>
-                        <input type="text" name="mob_no" class="form-control">
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <button type="button" class="btn btn-secondary prev-step">Previous</button>
-                        <button type="button" class="btn btn-primary next-step">Continue</button>
-                    </div>
-                </div>
-
-                <!-- Step 4 -->
-             <div class="step d-none" id="step4">
-                    <h5 class="mb-3">Licenses/Documents Held</h5>
-                    <!-- Repeat this structure for each document -->
-                    <div class="form-group">
-                        <label for="national_licence">Passport</label>
-                        <input type="text" name="national_licence_item_no" class="form-control" placeholder="No.">
-                        <input type="text" name="national_licence_issued_date" class="form-control" placeholder="Issued Date">
-                        <input type="text" name="national_licence_place" class="form-control" placeholder="Place">
-                        <input type="text" name="national_licence_expiry_date" class="form-control" placeholder="Expiry Date">
-                        <input type="text" name="national_licence_grade" class="form-control" placeholder="Grade">
-                    </div>
-                    <div class="form-group">
-                        <label for="national_licence">NATIONAL SEAMAN’S BOOK/CDC</label>
-                        <input type="text" name="national_licence_item_no" class="form-control" placeholder="No.">
-                        <input type="text" name="national_licence_issued_date" class="form-control" placeholder="Issued Date">
-                        <input type="text" name="national_licence_place" class="form-control" placeholder="Place">
-                        <input type="text" name="national_licence_expiry_date" class="form-control" placeholder="Expiry Date">
-                        <input type="text" name="national_licence_grade" class="form-control" placeholder="Grade">
-                    </div>
-                    <!-- Repeat for each document like STCW Endorsement, Passport, etc. -->
-                    <div class="d-flex justify-content-between">
-                        <button type="button" class="btn btn-secondary prev-step">Previous</button>
-                        <button type="button" class="btn btn-primary next-step">Continue</button>
-                    </div>
-                </div>
-
-                 <!-- Step 5 -->
-             <div class="step d-none" id="step4">
-                    <h5 class="mb-3">Certificates Held</h5>
-                    <!-- Repeat this structure for each document -->
-                    <div class="form-group">
-                    <label for="national_licence">Passport</label>
-                        <input type="text" name="national_licence_item_no" class="form-control" placeholder="No.">
-                        <input type="text" name="national_licence_issued_date" class="form-control" placeholder="Issued Date">
-                        <input type="text" name="national_licence_place" class="form-control" placeholder="Place">
-                        <input type="text" name="national_licence_expiry_date" class="form-control" placeholder="Expiry Date">
-                        <input type="text" name="national_licence_grade" class="form-control" placeholder="Grade">
-                    </div>
-             </div>
 
             <input type="submit" class="btnn"  value="REGISTER" name="regs" style="background-color: #ff7200;color: white">
             

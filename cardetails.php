@@ -18,7 +18,7 @@
 }
 
 body{
-    background: url("images/carbg2.jpg");
+    /* background: url("images/carbg2.jpg"); */
     background-position: center;
     background-size: cover;
 }

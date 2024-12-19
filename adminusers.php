@@ -15,7 +15,7 @@
 }
 .hai{
     width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0)50%, rgba(0,0,0,0)50%),url("../images/carbg2.jpg");
+    /* background: linear-gradient(to top, rgba(0,0,0,0)50%, rgba(0,0,0,0)50%),url("../images/carbg2.jpg"); */
     background-position: center;
     background-size: cover;
     height: 109vh;
@@ -193,7 +193,7 @@ $num=mysqli_num_rows($queryy);
                     <tr>
                         <th>NAME</th> 
                         <th>EMAIL</th>
-                        <th>Date Available</th>
+                        <th>Date Of Avaibility</th>
                         <th>Position Applied</th>
                         <th>PHONE NUMBER</th> 
                         <th>GENDER</th> 
@@ -211,7 +211,8 @@ $num=mysqli_num_rows($queryy);
                 <tr  class="active-row">
                     <td><?php echo $res['FNAME']."  ".$res['LNAME'];?></php></td>
                     <td><?php echo $res['EMAIL'];?></php></td>
-                    <td><?php echo $res['LIC_NUM'];?></php></td>
+                    <td><?php echo $res['date_available'];?></php></td>
+                    <td><?php echo $res['position_applied'];?></php></td>
                     <td><?php echo $res['PHONE_NUMBER'];?></php></td>
                     <td><?php echo $res['GENDER'];?></php></td>
                     <td><button type="submit" class="but" name="approve"><a href="deleteuser.php?id=<?php echo $res['EMAIL']?>">DELETE USER</a></button></td>
